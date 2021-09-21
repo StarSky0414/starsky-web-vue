@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import MakeBean from '../views/MakeBean.vue'
-import changeMarkDown from '../views/ChangeMarkDown.vue'
+import changeMarkDown from '../views/ChangeMarkDownTest.vue'
 import HelloWord from '../components/HelloWorld'
 
 const routes = [

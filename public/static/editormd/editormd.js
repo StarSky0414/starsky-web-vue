@@ -3676,8 +3676,9 @@
      */
     
     editormd.markdownToCRenderer = function(toc, container, tocDropdown, startLevel) {
-        
-        var html        = "";    
+
+        debugger;
+        var html        = "";
         var lastLevel   = 0;
         var classPrefix = this.classPrefix;
         
@@ -3896,7 +3897,7 @@
         var defaults = {
             gfm                  : true,
             toc                  : true,
-            tocm                 : false,
+            tocm                 : true,
             tocStartLevel        : 1,
             tocTitle             : "目录",
             tocDropdown          : false,
@@ -3915,13 +3916,14 @@
             sequenceDiagram      : false,
             previewCodeHighlight : true
         };
-        
+
+        debugger;
         editormd.$marked  = marked;
 
         var div           = $("#" + id);
         var settings      = div.settings = $.extend(true, defaults, options || {});
         var saveTo        = div.find("textarea");
-        
+
         if (saveTo.length < 1)
         {
             div.append("<textarea></textarea>");
@@ -3970,14 +3972,16 @@
         }
         
         div.addClass("markdown-body " + this.classPrefix + "html-preview").append(markdownParsed);
-        
+
+        debugger;
         var tocContainer = (settings.tocContainer !== "") ? $(settings.tocContainer) : div;
         
         if (settings.tocContainer !== "")
         {
             tocContainer.attr("previewContainer", false);
         }
-         
+
+        debugger;
         if (settings.toc) 
         {
             div.tocContainer = this.markdownToCRenderer(markdownToC, tocContainer, settings.tocDropdown, settings.tocStartLevel);

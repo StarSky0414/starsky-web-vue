@@ -1,6 +1,15 @@
 <template>
+<div>
+  <el-button @click="getHtml()">获取信息</el-button>
+  <el-button @click="add()">增加</el-button>
   <div :id="id">
   </div>
+  {{makdownText}}
+  <el-row :gutter="20">
+    <el-col :span="16" id="show" ><div class="grid-content bg-purple"></div></el-col>
+    <el-col :span="8" id="markDownToc"> <div class="markdown-toc"></div> <div class="grid-content bg-purple"></div></el-col>
+  </el-row>
+</div>
 </template>
 <script>
 import $ from "jquery";
@@ -10,16 +19,17 @@ export default {
   name:"MarkdownEditor",
   data:function(){
     return {
+      makdownText:"#heee",
       //最终生成的编辑器
       editor:null,
       //默认选项
       defaultOptions:{
         //width: "90%",
-        height: 740,
+        height: 200,
         path : "/static/editormd/lib/",
-        theme : "dark",
-        previewTheme : "dark",
-        editorTheme : "pastel-on-dark",
+        // theme : "dark",
+        // previewTheme : "dark",
+        // editorTheme : "pastel-on-dark",
         //markdown : md,   //动态设置的markdown文本
         codeFold : true,
         //syncScrolling : false,
@@ -44,12 +54,14 @@ export default {
         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
         imageUploadURL : "./php/upload.php",
         onload : function() {
-          //console.log('onload', this);
+          console.log('onload', this);
           //this.fullscreen();
           //this.unwatch();
-          //this.watch().fullscreen();
+          // this.watch().fullscreen();
 
-          //this.setMarkdown("#PHP");
+          this.setMarkdown("#PHP\n" +
+              "##PHP\n" +
+              "[TOC]");
           //this.width("100%");
           //this.height(480);
           //this.resize("100%", 640);
@@ -90,7 +102,7 @@ export default {
       //设置全局变量，因为editormd依赖jquery
       window.$=window.jQuery=$;
       //异步加载并执行
-      $.getScript("/static/editormd/editormd.min.js",function(script){
+      $.getScript("/static/editormd/editormd.js",function(script){
         callback();
       })
       //加载css
@@ -101,6 +113,25 @@ export default {
      */
     getOptions(){
       return Object.assign(this.defaultOptions,this.options);
+    },
+    getHtml(){
+      console.log(this.editor.getMarkdown())
+      // console.log(markdownToHTML.getMarkdown())
+      this.makdownText = this.editor.getMarkdown();
+      $("#show").empty()
+      editormd.markdownToHTML("show",{markdown:this.makdownText,tocContainer:"#markDownToc"});
+    },
+    add(){
+      // console.log(markdownToHTML.getMarkdown())
+      this.makdownText = 1;
+      this.editor;
+      // debugger
+      this.editor.setMarkdown("##PHP\n" +
+          "##PHP\n" +
+          "[TOC]");
+
+      $("#show").empty()
+      editormd.markdownToHTML("show",{markdown:"Hello",tocContainer:"markDownToc"});
     }
   }
 }
