@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import MakeBean from '../views/MakeBean.vue'
 import changeMarkDown from '../views/ChangeMarkDownTest.vue'
+import showMakrDownFile from '../views/markDown/ShowMakrDownFile.vue'
 import HelloWord from '../components/HelloWorld'
 
 const routes = [
@@ -27,6 +28,11 @@ const routes = [
     path: '/changeMarkDown',
     name: 'changeMarkDown',
     component: changeMarkDown
+  },
+  {
+    path: '/showMakrDownFile',
+    name: 'showMakrDownFile',
+    component: showMakrDownFile
   }
 ]
 

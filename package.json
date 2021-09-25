@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "core-js": "^3.6.5",
     "editor.md": "^1.5.0",
     "element-plus": "^1.1.0-beta.7",
@@ -14,6 +15,7 @@
     "jquery": "^3.6.0",
     "scriptjs": "^2.5.9",
     "vue": "^3.0.0",
+    "vue-axios": "^3.3.7",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "zepto": "^1.2.0"

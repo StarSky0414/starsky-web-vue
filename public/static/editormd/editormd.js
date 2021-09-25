@@ -3677,7 +3677,6 @@
     
     editormd.markdownToCRenderer = function(toc, container, tocDropdown, startLevel) {
 
-        debugger;
         var html        = "";
         var lastLevel   = 0;
         var classPrefix = this.classPrefix;
@@ -3917,7 +3916,6 @@
             previewCodeHighlight : true
         };
 
-        debugger;
         editormd.$marked  = marked;
 
         var div           = $("#" + id);
@@ -3973,7 +3971,6 @@
         
         div.addClass("markdown-body " + this.classPrefix + "html-preview").append(markdownParsed);
 
-        debugger;
         var tocContainer = (settings.tocContainer !== "") ? $(settings.tocContainer) : div;
         
         if (settings.tocContainer !== "")
@@ -3981,8 +3978,7 @@
             tocContainer.attr("previewContainer", false);
         }
 
-        debugger;
-        if (settings.toc) 
+        if (settings.toc)
         {
             div.tocContainer = this.markdownToCRenderer(markdownToC, tocContainer, settings.tocDropdown, settings.tocStartLevel);
             

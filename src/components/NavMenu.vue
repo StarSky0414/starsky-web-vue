@@ -14,6 +14,7 @@
       <el-menu-item index="/MakeBean" >生成bean</el-menu-item>
     </el-sub-menu>
     <el-menu-item index="/changeMarkDown">编辑MarkDown</el-menu-item>
+    <el-menu-item index="/showMakrDownFile">展示MarkDown</el-menu-item>
 
 <!--    <el-menu-item index="3" disabled>消息中心</el-menu-item>-->
 <!--    <el-menu-item index="4">订单管理</el-menu-item>-->
