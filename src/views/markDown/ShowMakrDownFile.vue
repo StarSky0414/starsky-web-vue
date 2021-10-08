@@ -83,10 +83,10 @@ export default {
     },
     queryContext() {
 // 发起get请求
-      axios.get('/api/article/queryList', {
+      axios.get('/api/article/queryOnce', {
         // get传递的query参数（传递的参数应与后台人员协商，本次模拟不做限制，不做判断）
         params: {
-          userId: 1,
+          articleId: 1,
         }
       }).then((response) => {
         // then 指成功之后的回调 (注意：使用箭头函数，可以不考虑this指向)

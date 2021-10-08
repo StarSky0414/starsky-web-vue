@@ -1,0 +1,51 @@
+{
+  "id": "2851781",
+  "name": "starsky-vue",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "809967",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "2076339",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "e8a9",
+      "unicode_decimal": 59561
+    },
+    {
+      "icon_id": "2945763",
+      "name": "查看",
+      "font_class": "chakan",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "11372758",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e8c3",
+      "unicode_decimal": 59587
+    },
+    {
+      "icon_id": "23880821",
+      "name": "业务流程",
+      "font_class": "yewuliucheng",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "23899461",
+      "name": "证书",
+      "font_class": "zhengshu",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    }
+  ]
+}

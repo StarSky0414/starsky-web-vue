@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import MakeBean from '../views/MakeBean.vue'
 import changeMarkDown from '../views/ChangeMarkDownTest.vue'
 import showMakrDownFile from '../views/markDown/ShowMakrDownFile.vue'
+import showArticleList from '../views/markDown/ShowArticleList.vue'
 import HelloWord from '../components/HelloWorld'
 
 const routes = [
@@ -33,6 +34,11 @@ const routes = [
     path: '/showMakrDownFile',
     name: 'showMakrDownFile',
     component: showMakrDownFile
+  },
+  {
+    path: '/showArticleList',
+    name: 'showArticleList',
+    component: showArticleList
   }
 ]
 

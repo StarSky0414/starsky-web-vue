@@ -15,6 +15,7 @@
     </el-sub-menu>
     <el-menu-item index="/changeMarkDown">编辑MarkDown</el-menu-item>
     <el-menu-item index="/showMakrDownFile">展示MarkDown</el-menu-item>
+    <el-menu-item index="/showArticleList">展示MarkDown列表</el-menu-item>
 
 <!--    <el-menu-item index="3" disabled>消息中心</el-menu-item>-->
 <!--    <el-menu-item index="4">订单管理</el-menu-item>-->
