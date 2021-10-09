@@ -16,33 +16,16 @@
         </el-calendar>
       </div>
 
-
-      <!--      <el-card class="box-card">-->
-      <!--        <template #header>-->
-      <!--          <div class="card-header">-->
-      <!--            <span>Card name</span>-->
-      <!--          </div>-->
-      <!--        </template>-->
-      <!--&lt;!&ndash;        <el-tag>Default</el-tag>&ndash;&gt;-->
-
-
-      <!--      </el-card>-->
-
     </el-aside>
     <el-main id="main">
-      <el-card class="box-card" shadow="hover" v-for="o in 4" :key="o">
-        <div>Test</div>
+      <el-card class="box-card" shadow="hover" v-for="tableDataItem in tableData" :key="tableDataItem.id">
+        <div>{{ tableDataItem.title }}</div>
         <el-row :gutter="20">
           <el-col :span="2">
-            <el-image style="width: 100px; height: 100px" fit="fill" src="/static/img/head.jpg"></el-image>
+            <el-image style="width: 100px; height: 100px" fit="fill" src="{{tableDataItem.photoUrl}}"></el-image>
           </el-col>
           <el-col :span="22">
-            <div class="mk-context">AbstractQueuedSynchronizer内部实现
-              AQS（AbstractQueuedSynchronizer）是JAVA中众多锁以及并发工具的基础，其底层采用乐观锁，大量使用了CAS操作， 并且在冲突时，采用自旋方式重试，以实现轻量级和高效地获取锁。
-
-              AQS虽然被定义为抽象类，但事实上它并不包含任何抽象方法。这是因为AQS是被设计来支持多种用途的，如果定义抽象方法，则子类在继承时必须要覆写所有的抽象方法，这显然是不合理的。所以AQS将一些需要子类覆写的方法都设计成protect方法，将其默认实现为抛出UnsupportedOperationException异常。如果子类使用到这些方法，但是没有覆写，则会抛出异常；如果子类没有使用到这些方法，则不需要做任何操作。
-
-              AQS中实现了锁的获取框架，锁的实际获取逻
+            <div class="mk-context">{{tableDataItem.generalize}}
             </div>
           </el-col>
         </el-row>
@@ -53,7 +36,7 @@
                 <span class="iconfont icon-chakan"><span style="margin-left: 5px">200</span></span>
               </el-col>
               <el-col :span="12">
-                <span class="iconfont icon-shijian"><span style="margin-left: 5px">2021-03-21</span></span>
+                <span class="iconfont icon-shijian"><span style="margin-left: 5px">{{tableDataItem.updateTime.split(" ")[0]}}</span></span>
               </el-col>
               <el-col :span="6">
                 <span class="iconfont icon-fenxiang"><span style="margin-left: 5px">150</span></span>
@@ -62,6 +45,15 @@
           </el-col>
         </div>
       </el-card>
+      <div class="tabListPage">
+        <el-pagination @size-change="handleSizeChange"
+                       @current-change="handleCurrentChange"
+                       :current-page="currentPage"
+                       :page-sizes="pageSizes"
+                       :page-size="PageSize" layout="total, sizes, prev, pager, next, jumper"
+                       :total="totalCount">
+        </el-pagination>
+      </div>
     </el-main>
   </el-container>
 </template>
@@ -69,14 +61,29 @@
 <script>
 import edit from '@element-plus/icons'
 import { ElMessage } from 'element-plus'
+import axios from "axios";
+import $ from "jquery";
 
 
 export default {
   name: "ShowArticleList",
   data:function (){
     return{
-      dateList:["2021-10-01","2021-11-01"]
+      dateList:["2021-10-01","2021-11-01"],
+      // 总数据
+      tableData:[],
+      // 默认显示第几页
+      currentPage:1,
+      // 总条数，根据接口获取数据长度(注意：这里不能为空)
+      totalCount:1,
+      // 个数选择器（可修改）
+      pageSizes:[1,2,3,4],
+      // 默认每页显示的条数（可修改）
+      pageSize:5,
     }
+  },
+  created() {
+    this.queryContextList(this.currentPage,this.pageSize);
   },
   methods:{
     queryDate(date,isquery){
@@ -88,7 +95,46 @@ export default {
         return;
       }
       alert(date);
-    }
+    },
+    queryContextList(currentPage,pageSize) {
+// 发起get请求
+      axios.get('/api/article/queryList', {
+        // get传递的query参数（传递的参数应与后台人员协商，本次模拟不做限制，不做判断）
+        params: {
+          userId: 1,
+          current: currentPage,
+          size: pageSize,
+        }
+      }).then((response) => {
+        // then 指成功之后的回调 (注意：使用箭头函数，可以不考虑this指向)
+        console.log(response);
+        console.log(response.data);
+
+        this.totalCount = response.data.total;
+        this.tableData = response.data.result;
+
+      }).catch((error) => {
+        // catch 指请求出错的处理
+        console.log(error);
+      });
+    },
+    // 分页
+    // 每页显示的条数
+    handleSizeChange(val) {
+      // 改变每页显示的条数
+      this.pageSize=val
+      // 注意：在改变每页显示的条数时，要将页码显示到第一页
+      this.currentPage=1
+      // 点击每页显示的条数时，显示第一页
+      this.queryContextList(this.currentPage,this.pageSize)
+    },
+    // 显示第几页
+    handleCurrentChange(val) {
+      // 改变默认的页数
+      this.currentPage=val
+      // 切换页码时，要获取每页显示的条数
+      this.queryContextList(this.currentPage,this.pageSize)
+    },
   }
 }
 </script>
