@@ -1,4 +1,6 @@
 <template>
+
+
   <el-row :gutter="20" id="showMakeFile">
     <el-col :span="16" id="show" style="box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)">
       <div class="grid-content bg-purple"></div>
@@ -82,17 +84,17 @@ export default {
 
     },
     queryContext() {
+      console.log(this.$route.query.id)
 // 发起get请求
       axios.get('/api/article/queryOnce', {
         // get传递的query参数（传递的参数应与后台人员协商，本次模拟不做限制，不做判断）
         params: {
-          articleId: 1,
+          articleId: this.$route.query.id,
         }
       }).then((response) => {
         // then 指成功之后的回调 (注意：使用箭头函数，可以不考虑this指向)
         console.log(response);
         console.log(response.data);
-        debugger;
         $("#show").empty()
         editormd.markdownToHTML("show", {markdown: response.data.result.context, tocContainer: "#markDownToc",theme:"dark"});
       }).catch((error) => {

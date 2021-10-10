@@ -18,32 +18,32 @@
 
     </el-aside>
     <el-main id="main">
-      <el-card class="box-card" shadow="hover" v-for="tableDataItem in tableData" :key="tableDataItem.id">
-        <div>{{ tableDataItem.title }}</div>
-        <el-row :gutter="20">
-          <el-col :span="2">
-            <el-image style="width: 100px; height: 100px" fit="fill" src="{{tableDataItem.photoUrl}}"></el-image>
-          </el-col>
-          <el-col :span="22">
-            <div class="mk-context">{{tableDataItem.generalize}}
-            </div>
-          </el-col>
-        </el-row>
-        <div class="operation">
-          <el-col :span="5" :offset="18">
-            <el-row :gutter="20">
-              <el-col :span="6">
-                <span class="iconfont icon-chakan"><span style="margin-left: 5px">200</span></span>
-              </el-col>
-              <el-col :span="12">
-                <span class="iconfont icon-shijian"><span style="margin-left: 5px">{{tableDataItem.updateTime.split(" ")[0]}}</span></span>
-              </el-col>
-              <el-col :span="6">
-                <span class="iconfont icon-fenxiang"><span style="margin-left: 5px">150</span></span>
-              </el-col>
-            </el-row>
-          </el-col>
-        </div>
+      <el-card class="box-card" shadow="hover"  v-for="tableDataItem in tableData" :key="tableDataItem.id" @click="jumpOnce(tableDataItem.id)">
+          <div>{{ tableDataItem.title }}</div>
+          <el-row :gutter="20">
+            <el-col :span="2">
+              <el-image style="width: 100px; height: 100px" fit="fill" src="{{tableDataItem.photoUrl}}"></el-image>
+            </el-col>
+            <el-col :span="22">
+              <div class="mk-context">{{tableDataItem.generalize}}
+              </div>
+            </el-col>
+          </el-row>
+          <div class="operation" >
+            <el-col :span="5" :offset="18">
+              <el-row :gutter="20">
+                <el-col :span="6">
+                  <span class="iconfont icon-chakan"><span style="margin-left: 5px">200</span></span>
+                </el-col>
+                <el-col :span="12">
+                  <span class="iconfont icon-shijian"><span style="margin-left: 5px">{{tableDataItem.updateTime.split(" ")[0]}}</span></span>
+                </el-col>
+                <el-col :span="6">
+                  <span class="iconfont icon-fenxiang"><span style="margin-left: 5px">150</span></span>
+                </el-col>
+              </el-row>
+            </el-col>
+          </div>
       </el-card>
       <div class="tabListPage">
         <el-pagination @size-change="handleSizeChange"
@@ -118,6 +118,15 @@ export default {
         console.log(error);
       });
     },
+    jumpOnce(id){
+      console.log(id);
+      this.$router.push({
+        path: 'showMakrDownFile',
+        query: {
+          id: id,
+        }
+      });
+    },
     // 分页
     // 每页显示的条数
     handleSizeChange(val) {
@@ -140,13 +149,13 @@ export default {
 </script>
 
 <style scoped>
-#aside {
-  background-color: #00a8c6;
-}
+/*#aside {*/
+/*  background-color: #00a8c6;*/
+/*}*/
 
-#main {
-  background-color: #5a934a;
-}
+/*#main {*/
+/*  background-color: #5a934a;*/
+/*}*/
 
 .text {
   font-size: 14px;
