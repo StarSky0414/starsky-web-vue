@@ -206,6 +206,10 @@ export default {
         this.requireEditor(function () {
           vm.editor = editormd(vm.id, vm.getOptions());
         })
+        this.$route.query.id = response.data.result.id;
+        this.fileInfo.generalize = response.data.result.generalize;
+        this.fileInfo.title = response.data.result.title;
+        this.fileInfo.tagsValue= response.data.result.tag.split(",");
         // this.editor.setMarkdown(response.data.result.context);
       }).catch((error) => {
         // catch 指请求出错的处理

@@ -41,6 +41,9 @@
                 <el-col :span="6">
                   <span class="iconfont icon-fenxiang"><span style="margin-left: 5px">150</span></span>
                 </el-col>
+                <el-col :span="6" @click.stop="jumpEditor(tableDataItem.id)">
+                  <span class="iconfont icon-zhengshu"><span style="margin-left: 5px">编辑</span></span>
+                </el-col>
               </el-row>
             </el-col>
           </div>
@@ -122,6 +125,15 @@ export default {
       console.log(id);
       this.$router.push({
         path: 'showMakrDownFile',
+        query: {
+          id: id,
+        }
+      });
+    },
+    jumpEditor(id){
+      console.log(id);
+      this.$router.push({
+        path: 'editorMakrDownFile',
         query: {
           id: id,
         }
