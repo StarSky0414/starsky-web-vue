@@ -5,6 +5,7 @@ import changeMarkDown from '../views/ChangeMarkDownTest.vue'
 import showMakrDownFile from '../views/markDown/ShowMakrDownFile.vue'
 import showArticleList from '../views/markDown/ShowArticleList.vue'
 import editorMakrDownFile from '../views/markDown/EditorMakrDownFile.vue'
+import login from '../views/user/Login.vue'
 import HelloWord from '../components/HelloWorld'
 
 const routes = [
@@ -45,6 +46,11 @@ const routes = [
     path: '/editorMakrDownFile',
     name: 'editorMakrDownFile',
     component: editorMakrDownFile
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
   }
 ]
 
