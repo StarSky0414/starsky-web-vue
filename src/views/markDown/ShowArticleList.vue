@@ -41,7 +41,7 @@
                 <el-col :span="6">
                   <span class="iconfont icon-fenxiang"><span style="margin-left: 5px">150</span></span>
                 </el-col>
-                <el-col :span="6" @click.stop="jumpEditor(tableDataItem.id)">
+                <el-col v-if="userInfo" :span="6" @click.stop="jumpEditor(tableDataItem.id)">
                   <span class="iconfont icon-zhengshu"><span style="margin-left: 5px">编辑</span></span>
                 </el-col>
               </el-row>
@@ -80,12 +80,15 @@ export default {
       // 总条数，根据接口获取数据长度(注意：这里不能为空)
       totalCount:1,
       // 个数选择器（可修改）
-      pageSizes:[1,2,3,4],
+      pageSizes:[10],
       // 默认每页显示的条数（可修改）
-      pageSize:5,
+      pageSize:10,
+      userInfo:null
     }
   },
   created() {
+    let userInfoString = sessionStorage.getItem('user');
+    this.userInfo = JSON.parse(userInfoString);
     this.queryContextList(this.currentPage,this.pageSize);
   },
   methods:{
@@ -100,6 +103,13 @@ export default {
       alert(date);
     },
     queryContextList(currentPage,pageSize) {
+      // if (!this.userInfo){
+      //   ElMessage({
+      //     message: "请先登录",
+      //     type: 'error',
+      //   });
+      //   this.$router.back();
+      // }
 // 发起get请求
       axios.get('/api/article/queryList', {
         // get传递的query参数（传递的参数应与后台人员协商，本次模拟不做限制，不做判断）

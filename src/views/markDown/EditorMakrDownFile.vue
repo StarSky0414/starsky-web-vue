@@ -67,7 +67,7 @@ export default {
       //默认选项
       defaultOptions: {
         //width: "90%",
-        height: "500",
+        height: "800",
         path: "/static/editormd/lib/",
         // theme : "dark",
         // previewTheme : "dark",

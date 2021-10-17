@@ -33,12 +33,15 @@
 </template>
 
 <script>
+import axios from "axios";
+import {ElMessage} from "element-plus";
+
 export default {
   data(){
     return {
       logining: false,
       ruleForm2: {
-        username: 'admin',
+        username: 'xiaohei',
         password: '123456',
       },
       rules2: {
@@ -53,17 +56,41 @@ export default {
       this.$refs.ruleForm2.validate((valid) => {
         if(valid){
           this.logining = true;
-          if(this.ruleForm2.username === 'admin' &&
-              this.ruleForm2.password === '123456'){
+          // if(this.ruleForm2.username === 'admin' &&
+          //     this.ruleForm2.password === '123456'){
+          //   this.logining = false;
+          //   sessionStorage.setItem('user', this.ruleForm2.username);
+          //   this.$router.push({path: '/'});
+          // }else{
+          //   this.logining = false;
+          //   this.$alert('username or password wrong!', 'info', {
+          //     confirmButtonText: 'ok'
+          //   })
+          // }
+
+          // 发起get请求
+          axios.post('/api/userInfo/login',{name:this.ruleForm2.username,password:this.ruleForm2.password}).then((response) => {
+
+            if (response.data.code === 0){
+              sessionStorage.setItem('user', JSON.stringify(response.data.result));
+              this.$router.push({path: '/'});
+            }else {
+              ElMessage({
+                message: response.data.message,
+                type: 'error',
+              });
+              this.logining = false;
+            }
+
+            // then 指成功之后的回调 (注意：使用箭头函数，可以不考虑this指向)
+            console.log(response);
+            console.log(response.data.result);
+
+          }).catch((error) => {
+            // catch 指请求出错的处理
+            console.log(error);
             this.logining = false;
-            sessionStorage.setItem('user', this.ruleForm2.username);
-            this.$router.push({path: '/'});
-          }else{
-            this.logining = false;
-            this.$alert('username or password wrong!', 'info', {
-              confirmButtonText: 'ok'
-            })
-          }
+          });
         }else{
           console.log('error submit!');
           return false;
@@ -77,12 +104,13 @@ export default {
 <style scoped>
 .login-container {
   width: 100%;
-  height: 100%;
+  height: 90%;
+  display: flex;
 }
 .login-page {
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  margin: 180px auto;
+  margin: 240px auto;
   width: 350px;
   padding: 35px 35px 15px;
   background: #fff;
