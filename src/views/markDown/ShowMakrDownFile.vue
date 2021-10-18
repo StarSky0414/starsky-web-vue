@@ -109,6 +109,5 @@ export default {
 
 <style lang="stylus">
 #showMakeFile
-  height: 100%;
   margin: 25px !important;
 </style>

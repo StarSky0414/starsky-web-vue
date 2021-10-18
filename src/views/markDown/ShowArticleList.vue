@@ -205,5 +205,9 @@ export default {
   --el-calendar-cell-width: none !important;
 }
 
+.el-container{
+  height: inherit;
+}
+
 
 </style>
