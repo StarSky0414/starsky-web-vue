@@ -129,14 +129,14 @@ export default {
     let vm = this;
     //加载editormd
     this.requireEditor(function () {
-      // vm.editor = editormd(vm.id, vm.getOptions());
+      vm.editor = editormd(vm.id, vm.getOptions());
     })
 
   },
   created() {
 
     if (this.$route.query.id){
-      this.queryContext();
+      setTimeout(this.queryContext(),1000)
     }else {
       let vm = this;
       //加载editormd
