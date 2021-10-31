@@ -9,6 +9,7 @@
     <router-view/>
   <el-footer class="footer">
     <a href="http://www.miitbeian.gov.cn">辽ICP备17005837号</a>
+    <a>2021 LuoYunYuan CopyRight</a>
   </el-footer>
 </template>
 
@@ -30,15 +31,17 @@ body
 
 
 footer
-  height 55px
-  width 100%
-  background-color #545c64
-  display flex
+  width: 100%;
+  background-color: #545c64;
+  display: flex;
+  align-content: flex-start;
   justify-content: space-evenly;
   align-items: center;
+  flex-direction: column;
   a
     text-decoration: none;
     color white
+    font-size: x-small;
 
 </style>
 <script>

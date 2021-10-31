@@ -6,6 +6,7 @@ import showMakrDownFile from '../views/markDown/ShowMakrDownFile.vue'
 import showArticleList from '../views/markDown/ShowArticleList.vue'
 import editorMakrDownFile from '../views/markDown/EditorMakrDownFile.vue'
 import login from '../views/user/Login.vue'
+import fileManage from '../views/tool/FileManage.vue'
 import HelloWord from '../components/HelloWorld'
 
 const routes = [
@@ -51,6 +52,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
+  },
+  {
+    path: '/fileManage',
+    name: 'fileManage',
+    component: fileManage
   }
 ]
 
