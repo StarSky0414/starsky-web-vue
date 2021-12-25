@@ -30,8 +30,8 @@
         </el-col>
         <el-col v-if="!userInfo" :span="8" style="display:flex;"><a style="cursor:hand;color: #ffffff;"
                                                                     @click="jumpLogin">登入</a></el-col>
-        <el-col v-if="!userInfo" :span="8" style="display:flex;"><a href="#" style="cursor:hand;color: #ffffff;"
-                                                                    @click="jumpRegister">注册</a></el-col>
+<!--        <el-col v-if="!userInfo" :span="8" style="display:flex;"><a href="#" style="cursor:hand;color: #ffffff;"-->
+<!--                                                                    @click="jumpRegister">注册</a></el-col>-->
         <el-col v-if="userInfo" :span="8" style="display:flex;"><a  style="cursor:hand;color: #ffffff;"
                                                                    @click="jumLoginOut">退出</a></el-col>
       </el-row>
