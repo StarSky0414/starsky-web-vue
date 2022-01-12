@@ -13,6 +13,7 @@
     <el-sub-menu index="">
       <template #title>工具</template>
       <el-menu-item v-if="userInfo"  index="/fileManage">文件管理</el-menu-item>
+      <el-menu-item v-if="userInfo"  index="/fileHold">文件暂存</el-menu-item>
     </el-sub-menu>
 <!--    <el-menu-item index="/changeMarkDown">编辑MarkDown</el-menu-item>-->
 <!--    <el-menu-item index="/showMakrDownFile">展示MarkDown</el-menu-item>-->

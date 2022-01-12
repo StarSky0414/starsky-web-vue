@@ -7,6 +7,7 @@ import showArticleList from '../views/markDown/ShowArticleList.vue'
 import editorMakrDownFile from '../views/markDown/EditorMakrDownFile.vue'
 import login from '../views/user/Login.vue'
 import fileManage from '../views/tool/FileManage.vue'
+import fileHold from '../views/fileHold/FileHold.vue'
 import HelloWord from '../components/HelloWorld'
 
 const routes = [
@@ -57,6 +58,11 @@ const routes = [
     path: '/fileManage',
     name: 'fileManage',
     component: fileManage
+  },
+  {
+    path: '/fileHold',
+    name: 'fileHold',
+    component: fileHold
   }
 ]
 
