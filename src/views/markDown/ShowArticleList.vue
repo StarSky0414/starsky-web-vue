@@ -17,7 +17,7 @@
       </div>
 
     </el-aside>
-    <el-main id="main">
+    <el-main id="main" >
       <el-card class="box-card" shadow="hover" v-for="tableDataItem in tableData" :key="tableDataItem.id"
                @click="jumpOnce(tableDataItem.id)">
         <h2>{{ tableDataItem.title }}</h2>
@@ -51,7 +51,7 @@
           </el-col>
         </div>
       </el-card>
-      <div class="tabListPage">
+      <div class="tabListPage" v-if="!tableData">
         <el-pagination @size-change="handleSizeChange"
                        @current-change="handleCurrentChange"
                        :current-page="currentPage"

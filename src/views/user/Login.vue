@@ -51,7 +51,19 @@ export default {
       checked: false
     }
   },
+  created: function() {
+    document.addEventListener('keydown',this.handleEvent)
+  },
+  beforeDestroy(){
+    document.removeEventListener('keydown', this.handleEvent);
+  },
   methods: {
+    handleEvent(e){
+      if (e.keyCode ===13){
+        //如果是Alt+F 的操作的话，方法执行与此
+        this.handleSubmit();
+      }
+    },
     handleSubmit(event){
       this.$refs.ruleForm2.validate((valid) => {
         if(valid){
@@ -104,7 +116,6 @@ export default {
 <style scoped>
 .login-container {
   width: 100%;
-  height: 90%;
   display: flex;
 }
 .login-page {
@@ -117,6 +128,7 @@ export default {
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
 }
+
 label.el-checkbox.rememberme {
   margin: 0px 0px 15px;
   text-align: left;

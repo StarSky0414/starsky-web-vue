@@ -1,4 +1,6 @@
 <template>
+  <el-config-provider :locale="locale">
+
   <keep-alive include="a,b">
     <nav-menu></nav-menu>
   </keep-alive>
@@ -11,6 +13,8 @@
     <a href="http://www.miitbeian.gov.cn">辽ICP备17005837号</a>
     <a>2021 LuoYunYuan CopyRight</a>
   </el-footer>
+  </el-config-provider>
+
 </template>
 
 <style lang="stylus">
@@ -29,6 +33,10 @@ body
   margin 0
   height 100%
 
+html
+  margin 0
+  height 87%
+
 
 footer
   width: 100%;
@@ -46,9 +54,20 @@ footer
 </style>
 <script>
 import NavMenu from "./components/NavMenu";
+import {ElConfigProvider} from 'element-plus'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 export default {
-  components: {NavMenu}
+  components: {
+    NavMenu,
+    [ElConfigProvider.name]:ElConfigProvider,//添加组件
+  },
+  data(){
+    return {
+      locale:zhCn,//给locale赋值
+    }
+  }
+
 }
 
 </script>

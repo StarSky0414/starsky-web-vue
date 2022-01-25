@@ -14,9 +14,12 @@
     "element-plus": "^1.1.0-beta.7",
     "enhanced-resolve": "^5.8.3",
     "jquery": "^3.6.0",
+    "qrcodejs2": "0.0.2",
     "scriptjs": "^2.5.9",
     "vue": "^3.0.0",
     "vue-axios": "^3.3.7",
+    "vue-cookies": "^1.7.4",
+    "vue-popperjs": "^2.3.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "zepto": "^1.2.0"
